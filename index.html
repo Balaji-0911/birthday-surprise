@@ -420,6 +420,78 @@
             position: relative;
         }
 
+        /* --- SECRET MESSAGE / CURTAIN PAGE FIX --- */
+        #curtain-page {
+            overflow-y: auto;
+            overflow-x: hidden;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+
+        #curtain-page .stage {
+            width: 100%;
+            min-height: 100vh;
+            height: auto;
+            overflow: visible;
+        }
+
+        #curtain-page .secret-content {
+            min-height: 100vh;
+            height: auto;
+            padding: 80px 20px 100px;
+            justify-content: flex-start;
+            overflow: visible;
+        }
+
+        #curtain-page .message-card {
+            width: min(92%, 760px);
+            max-width: 760px;
+            max-height: none;
+            height: auto;
+            margin: 30px auto;
+            padding: 45px 50px;
+            overflow: visible;
+            animation: none !important;
+            transform: none;
+        }
+
+        #curtain-page .message-card h2 {
+            text-align: center;
+        }
+
+        #curtain-page .message-card p {
+            white-space: pre-line;
+            overflow: visible;
+            animation: none !important;
+            transform: none !important;
+            font-size: clamp(1rem, 1.5vw, 1.15rem) !important;
+            line-height: 1.9 !important;
+            text-align: center;
+            color: rgba(255,255,255,0.86) !important;
+        }
+
+        #curtain-page .message-card .btn-neon {
+            display: block;
+            margin: 40px auto 0 !important;
+        }
+
+        /* Keep the secret letter completely still after the curtain opens. */
+        #curtain-page .message-card,
+        #curtain-page .message-card * {
+            animation: none !important;
+        }
+
+
+        /* Secret page is a readable letter, not an animated text panel. */
+        #curtain-page.active {
+            overflow-y: auto;
+        }
+
+        #curtain-page.active .message-card {
+            animation: none !important;
+            transform: none !important;
+        }
+
         /* --- MEMORY GALLERY FIXES --- */
         #gallery-page {
             background: #050505;
@@ -575,8 +647,57 @@
 
     .message-card {
         width: 94%;
-        padding: 25px 20px;
+        padding: 30px 20px;
         border-radius: 22px;
+    }
+
+    /* Secret message: make the full letter readable by normal page scrolling */
+    #curtain-page {
+        padding: 0 !important;
+        overflow-y: auto !important;
+    }
+
+    #curtain-page .stage {
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
+    }
+
+    #curtain-page .secret-content {
+        min-height: 100vh;
+        height: auto;
+        padding: 65px 12px 90px;
+        justify-content: flex-start;
+        overflow: visible;
+    }
+
+    #curtain-page .message-card {
+        width: 96%;
+        max-width: 760px;
+        margin: 20px auto;
+        padding: 28px 18px 35px;
+        overflow: visible;
+    }
+
+    #curtain-page .message-card h2 {
+        font-size: 2.25rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 24px !important;
+    }
+
+    #curtain-page .message-card p {
+        font-size: 1rem !important;
+        line-height: 1.85 !important;
+        text-align: center;
+        white-space: pre-line;
+    }
+
+    #curtain-page .message-card .btn-neon {
+        width: auto;
+        max-width: 100%;
+        padding: 14px 24px;
+        font-size: 0.82rem;
+        margin-top: 32px !important;
     }
 
     /* Gallery */
@@ -766,7 +887,7 @@ I'll leave this here for you.
         <div class="gallery-grid">
             <!-- Memory 1 -->
             <div class="memory-card">
-                <<img src="images/her1.jpg"
+                <img src="images/her1.jpg"
      alt="Memory"
      class="memory-image">
                 <div class="memory-hover-overlay">
